@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publications - JC Lab</title>
+    <!-- Link to Google Fonts for Roboto -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* 固定导航栏在页面顶部，并自适应宽度 */
+        .navbar {
+            background-color: #ffffff;
+            padding: 22px 0;
+            border-bottom: 4px solid #E6E6E6;
+            border-top: 1px solid #E6E6E6;
+            position: fixed;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            box-sizing: border-box;
+        }
+
+        .logo-text {
+            white-space: nowrap;
+        }
+
+        .nav-menu {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            width: 100%;
+        }
+
+        .nav-menu li {
+            margin-right: 20px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .hamburger-menu {
+            display: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .hamburger-menu img {
+            width: 50px;
+            height: auto;
+            margin-left: 15px;
+        }
+
+        .hamburger-menu span {
+            font-size: 18px;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .mobile-menu {
+            display: none;
+            background-color: #ffffff;
+            position: absolute;
+            top: 80px;
+            right: 0;
+            width: 200px;
+            flex-direction: column;
+            text-align: center;
+            border-top: 1px solid #E6E6E6;
+            z-index: 9999; /* 添加这一行 */
+        }
+
+        .mobile-menu a {
+            padding: 15px;
+            text-decoration: none;
+            color: #333;
+            border-bottom: 1px solid #E6E6E6;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .mobile-menu a:hover {
+            background-color: #f1f1f1;
+        }
+
+        @media screen and (max-width: 1600px) {
+            .nav-menu {
+                display: none !important;
+            }
+            .hamburger-menu {
+                display: flex;
+            }
+        }
+
+        @media screen and (min-width: 1600px) {
+            .hamburger-menu {
+                display: none;
+            }
+        }
+
+        body {
+            padding-top: 80px;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        /* Publications Title */
+        .publications-header {
+            background-color: #3fe370; /* Green background */
+            padding: 50px 0;
+            text-align: center;
+            color: white;
+        }
+
+        .publications-header h1 {
+            font-size: 50px;
+            margin: 0;
+        }
+
+        /* Highlighted section styling */
+        .highlighted-publications {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+            margin: 80px 0; /* 调整 margin-top 为 80px 或更多来增加距离 */
+        }
+
+        .highlight-box {
+            width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-align: left;
+            background-color: white;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .highlight-box img {
+            width: 100%;
+            height: auto;
+        }
+
+        .highlight-box-content {
+            padding: 15px;
+        }
+
+        .highlight-box h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .highlight-box p {
+            font-size: 14px;
+            margin-bottom: 15px;
+            color: #666;
+        }
+
+        .highlight-box a {
+            font-size: 14px;
+            color: #2b542c;
+            text-decoration: none;
+        }
+
+        .highlight-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Publications section */
+        .publications-content {
+            padding: 40px;
+            margin-top: -120px; /* 调整这个值 */
+        }
+
+        .publications-year {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 40px;
+        }
+
+        .publication-item {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+        .publication-item a {
+            color: #2b542c;
+            text-decoration: none;
+        }
+
+        .publication-item a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <a href="index.html" class="logo-text">Jin Chang | Quantum Nanodevices Laboratory, NTU</a>
+    <img src="NTU_Logo.png" alt="Intudo Logo" style="height:50px; margin-left:6px; vertical-align:middle;">
+        <ul class="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="research.html">Research</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="student-projects.html">Student Projects</a></li>
+            <li><a href="publications.html" class="active">Publications</a></li>
+            <li><a href="openings.html">Openings</a></li>
+            
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+
+        <div class="hamburger-menu" onclick="toggleMenu()">
+            <span>Menu</span>
+            <img src="menubar-logo.png" alt="Menu Icon">
+        </div>
+    </nav>
+
+    <div id="mobile-menu" class="mobile-menu">
+        <a href="index.html">Home</a>
+        <a href="research.html">Research</a>
+        <a href="team.html">Team</a>
+        <a href="student-projects.html">Student Projects</a>
+        <a href="publications.html" class="active">Publications</a>
+        <a href="openings.html">Openings</a>
+        
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+    </div>
+
+    <!-- Publications Header -->
+    <section class="publications-header" id="vanta-background">
+        <h1>Publications</h1>
+    </section>
+
+    <style>
+        .publications-header {
+            position: relative;
+            height: 100px;                /* 调整背景高度，可以改 250/350 */
+            display: flex;
+            justify-content: center;      /* 水平居中 */
+            align-items: center;          /* 垂直居中 */
+            text-align: center;
+            color: white;
+        }
+        
+        .publications-header h1 {
+            font-size: 56px;              /* 字体更大 */
+            font-weight: bold;
+            z-index: 1;                   /* 保证文字在背景上层 */
+            margin: 0;   
+            margin-top: 20px;                 /* 去掉默认外边距 */
+        }
+        </style>
+
+
+    
+
+
+    <!-- Highlighted Publications Section -->
+
+    <!--<section class="highlighted-publications">
+        <div class="highlight-box">
+            <img src="afbeelding1.png" alt="Highlighted Publication 1">
+            <div class="highlight-box-content">
+                <h3>Frequency tunable, cavity-enhanced single erbium quantum emitter</h3>
+                <p>Y. Yu, D. Oser, G. Da Prato, et al.</p>
+                <a href="#">Phys. Rev. Lett. 131, 170801 (2023)</a>
+            </div>
+        </div>
+        
+
+    </section>-->
+
+     
+
+    <!-- Publications Content -->
+    <section class="publications-content">
+
+
+
+<div class="publications-note" style="margin-top:150px; font-size:16px; color:#333;">
+  For the complete list of publications, please check my
+  <a href="https://scholar.google.com/citations?hl=en&user=ElpoVA4AAAAJ&view_op=list_works&sortby=pubdate" 
+     target="_blank" 
+     style="color:#D71440; text-decoration:none; font-weight:bold;">
+    Google Scholar Profile 🎓
+  </a>
+</div>
+
+
+          <!-- Publications 2025 -->
+        <div class="publications-year">2025</div>
+
+
+
+    <div class="publication-item">
+    K. Soroush, <em>et al.</em>  
+    <a href="https://arxiv.org/abs/2510.16754" 
+       style="color: #9b59b6; text-decoration: none;" target="_blank">
+        Post-processed estimation of quantum state trajectories.
+    </a>
+    <em>arXiv preprint</em>, arXiv:2510.16754 (2025).
+</div>
+
+
+
+        <div class="publication-item">
+    B. Hua, <em>et al.</em>  
+    <a href="https://archive.aps.org/smt/2025/mar-b31/6/" 
+       style="color: #9b59b6; text-decoration: none;" target="_blank">
+        Towards entangling distant solid state spin qubits via mechanical resonators.
+    </a>
+    <em>SMT</em>, 2025.
+</div>
+
+
+
+
+
+<div class="publication-item">
+    J. Gao, <em>et al.</em>  
+    <a href="https://arxiv.org/abs/2505.24725" 
+       style="color: #9b59b6; text-decoration: none;" target="_blank">
+        From Pixels to Camera: Scaling Superconducting Nanowire Single-Photon Detectors for Imaging at the Quantum-Limit.
+    </a>
+    <em>Nano Convergence</em>, 12.1 (2025): 49.
+</div>
+
+
+<div class="publication-item">
+    Z. Li, <em>et al.</em>  
+    <a href="https://arxiv.org/abs/2507.10312" 
+       style="color: #9b59b6; text-decoration: none;" target="_blank">
+        Heterogeneous integration of silicon nitride and amorphous silicon carbide photonics.
+    </a>
+    <em>APL Photonics</em>, 10.10 (2025).
+</div>
+
+
+
+<div class="publication-item">
+    W. Ji, <em>et al.</em>  
+    <a href="https://onlinelibrary.wiley.com/doi/full/10.1002/lpor.202401290" 
+       style="color: #9b59b6; text-decoration: none;" target="_blank">
+        Compact Metasurface Terahertz Spectrometer.
+    </a>
+    <em>Laser & Photonics Reviews</em>, 19.3, 2025: 2401290.
+</div>
+
+
+<div class="publication-item">
+    S Groeblacher, <em>et al.</em> 
+    <a href="https://research.tudelft.nl/en/publications/broadband-low-mass-and-high-reflectivity-metasurface-enhanced-pho/" 
+       style="color: #9b59b6; text-decoration: none;" target="_blank">
+        Broadband, Low-mass, and High-reflectivity Metasurface-Enhanced Photonic Crystal Reflector
+    </a>
+    <em>Patent
+</div>
+
+
+        <div class="publication-item">
+    B. Rodriguez, <em>et al.</em>  
+    <a href="https://pubs.acs.org/doi/full/10.1021/acsphotonics.4c01373" 
+       style="color: #9b59b6; text-decoration: none;" target="_blank">
+        Magic Silicon Dioxide for Widely Tunable Photonic Integrated Circuits.
+    </a>
+    <em>ACS Photonics</em>, 2025.
+        </div>
+
+        
+
+
+        
+                
+        
+
+
+
+          <!-- Publications 2024 -->
+        <div class="publications-year">2024</div>
+
+        <div class="publication-item">
+            I.E. Zadeh, <em>et al.</em>  
+            <a href="https://www.freepatentsonline.com/y2024/0328856.html" style="color: #9b59b6; text-decoration: none;" target="_blank">
+                Superconducting Electronic Signal Output Circuit and Readout Array.
+            </a>
+            <em>US Patent</em>, 18/706,522, 2024.
+        </div>
+        
+
+
+        <div class="publication-item">
+            W. Ji, <em>et al.</em>  
+            <a href="https://www.spiedigitallibrary.org/conference-proceedings-of-spie/PC13102/PC131020I/Compact-terahertz-spectrometer-based-on-a-metasurface/10.1117/12.3021392.full" style="color: #9b59b6; text-decoration: none;" target="_blank">
+                Compact terahertz spectrometer based on a metasurface.
+            </a>
+            <em>Millimeter, Submillimeter, and Far-Infrared Detectors and Instrumentation for Astronomy XII</em>, SPIE, 2024.
+        </div>
+
+        <div class="publication-item">
+            B. Lopez-Rodriguez, <em>et al.</em>  
+            <a href="https://arxiv.org/abs/2407.08480" style="color: #9b59b6; text-decoration: none;" target="_blank">
+                Magic silicon dioxide for widely tunable integrated photonics.
+            </a>
+            <em>arXiv preprint arXiv:2407.08480</em>, 2024.
+        </div>
+
+        <div class="publication-item">
+            B. Lopez-Rodriguez, <em>et al.</em>  
+            <a href="https://www.spiedigitallibrary.org/conference-proceedings-of-spie/13012/130120M/Large-deterministic-and-tunable-thermo-optic-shift-for-all-photonic/10.1117/12.3022107.full" style="color: #9b59b6; text-decoration: none;" target="_blank">
+                Large, deterministic and tunable thermo-optic shift for all photonic platforms.
+            </a>
+            <em>Integrated Photonics Platforms III</em>, Vol. 13012, SPIE, 2024.
+        </div>
+
+        <div class="publication-item">
+            J. W. Los, <em>et al.</em>  
+            <a href="https://pubs.aip.org/aip/app/article/9/6/066101/3296058" style="color: #9b59b6; text-decoration: none;" target="_blank">
+                High-performance photon number resolving detectors for 850–950 nm wavelength range.
+            </a>
+            <em>APL Photonics</em>, 9.6, 2024.
+        </div>
+
+        <div class="publication-item">
+            J. Chang, <em>et al.</em>  
+            <a href="https://pubs.acs.org/doi/full/10.1021/acs.nanolett.4c01374" style="color: #9b59b6; text-decoration: none;" target="_blank">
+                Broadband, High-Reflectivity Dielectric Mirrors at Wafer Scale: Combining Photonic Crystal and Metasurface Architectures for Advanced Lightsails.
+            </a>
+            <em>Nano Letters</em>, 2024.
+        </div>
+
+        <div class="publication-item">
+            F. Fung, <em>et al.</em>  
+            <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=ElpoVA4AAAAJ&sortby=pubdate&citation_for_view=ElpoVA4AAAAJ:mB3voiENLucC" style="color: #9b59b6; text-decoration: none;" target="_blank">
+                Towards a Programmable Spin-Mechanics Platform with Dynamic Qubit Transport.
+            </a>
+            <em>Bulletin of the American Physical Society</em>, 2024.
+        </div>
+                
+                
+        
+        
+        
+          <!-- Publications 2023 -->
+          <div class="publications-year">2023</div>
+       <div class="publication-item">
+    T. Hummel, <em>et al.</em>  
+    <a href="https://opg.optica.org/abstract.cfm?uri=fio-2023-FTh3B.1" style="color: #9b59b6; text-decoration: none;" target="_blank">
+        Gated-and optical biasing for SNSPDs.
+    </a>
+    <em>Frontiers in Optics</em>, Optica Publishing Group, 2023.
+</div>
+
+<div class="publication-item">
+    B. Lopez-Rodriguez, <em>et al.</em>  
+    <a href="https://pubs.acs.org/doi/full/10.1021/acsphotonics.3c00968" style="color: #9b59b6; text-decoration: none;" target="_blank">
+        High-quality amorphous silicon carbide for hybrid photonic integration deposited at a low temperature.
+    </a>
+    <em>ACS Photonics</em>, 10.10, 2023, pp. 3748-3754.
+</div>
+
+<div class="publication-item">
+    W. Ji, <em>et al.</em>  
+    <a href="https://arxiv.org/abs/2309.02341" style="color: #9b59b6; text-decoration: none;" target="_blank">
+        Compact Metasurface Terahertz Spectrometer.
+    </a>
+    <em>arXiv preprint arXiv:2309.02341</em>, 2023.
+</div>
+
+<div class="publication-item">
+    J. Guo, <em>et al.</em>  
+    <a href="https://www.nature.com/articles/s41467-023-40442-3" style="color: #9b59b6; text-decoration: none;" target="_blank">
+        Active-feedback quantum control of an integrated low-frequency mechanical resonator.
+    </a>
+    <em>Nature Communications</em>, 14.1, 2023, p. 4721.
+</div>
+
+<div class="publication-item">
+    W. Ji, <em>et al.</em>  
+    <a href="https://www.nature.com/articles/s41377-023-01218-y" style="color: #9b59b6; text-decoration: none;" target="_blank">
+        Recent advances in metasurface design and quantum optics applications with machine learning, physics-informed neural networks, and topology optimization methods.
+    </a>
+    <em>Light: Science & Applications</em>, 12.1, 2023, p. 169.
+</div>
+
+<div class="publication-item">
+    J. Chang, <em>et al.</em>  
+    <a href="https://www.nature.com/articles/s41565-023-01334-1" style="color: #9b59b6; text-decoration: none;" target="_blank">
+        Superconducting single-photon detectors get hot.
+    </a>
+    <em>Nature Nanotechnology</em>, 18.4, 2023, pp. 322-323.
+</div>
+
+<div class="publication-item">
+    J. Chang, <em>et al.</em>  
+    <a href="https://www.degruyter.com/document/doi/10.1515/nanoph-2022-0652/html" style="color: #9b59b6; text-decoration: none;" target="_blank">
+        Nanowire-based integrated photonics for quantum information and quantum sensing.
+    </a>
+    <em>Nanophotonics</em>, 12.3, 2023, pp. 339-358.
+</div>
+
+<div class="publication-item">
+    F. Fung, <em>et al.</em>  
+    <a href="https://ui.adsabs.harvard.edu/abs/2023APS..DMPS10003F/abstract" style="color: #9b59b6; text-decoration: none;" target="_blank">
+        Towards a high cooperativity spin-mechanical system with NV centers and high-Q silicon nitride nanobeams.
+    </a>
+    <em>APS Division of Atomic, Molecular and Optical Physics Meeting Abstracts</em>, Vol. 2023, 2023.
+</div>
+
+
+
+          <!-- Publications 2022 -->
+        <div class="publications-year">2022</div>
+        <div class="publication-item">
+            T. Hummel, <em>et al.</em>  
+            <a href="https://opg.optica.org/oe/fulltext.cfm?uri=oe-31-1-610&id=524556" style="color: #9b59b6; text-decoration: none;" target="_blank">
+                Nanosecond gating of superconducting nanowire single-photon detectors using cryogenic bias circuitry.
+            </a>
+            <em>Optics Express</em>, 31.1, 2022, pp. 610-625.
+        </div>
+
+        <div class="publication-item">
+            J. Jia, <em>et al.</em>  
+            <a href="https://www.sciencedirect.com/science/article/pii/S027288422201166X" style="color: #9b59b6; text-decoration: none;" target="_blank">
+                Effects of SiC content on the mechanical and thermophysical properties of 3D Cf/SiC–Al composites.
+            </a>
+            <em>Ceramics International</em>, 48.14, 2022, pp. 20571-20578.
+        </div>
+
+        <div class="publication-item">
+            B. Lopez-Rodriguez, <em>et al.</em>  
+            <a href="https://opg.optica.org/abstract.cfm?uri=cleo_at-2022-AW5P.2" style="color: #9b59b6; text-decoration: none;" target="_blank">
+                Ultra-high system detection efficiency superconducting nanowire single-photon detectors for quantum photonics and life sciences.
+            </a>
+            <em>CLEO: Applications and Technology</em>, Optica Publishing Group, 2022.
+        </div>
+
+        <div class="publication-item">
+            J. Chang, <em>et al.</em>  
+            <a href="https://opg.optica.org/prj/fulltext.cfm?uri=prj-10-4-1063&id=470770" style="color: #9b59b6; text-decoration: none;" target="_blank">
+                Efficient mid-infrared single-photon detection using superconducting NbTiN nanowires with high time resolution in a Gifford-McMahon cryocooler.
+            </a>
+            <em>Photonics Research</em>, 10.4, 2022, pp. 1063-1070.
+        </div>
+
+
+        <!-- Publications 2021 -->
+       <div class="publications-year">2021</div>   
+
+       <div class="publication-item">
+        Y. Gan, <em>et al.</em>  
+        <a href="https://pubs.aip.org/aip/apl/article/119/20/202601/40510" style="color: #9b59b6; text-decoration: none;" target="_blank">
+            Low noise MgB2 hot electron bolometer mixer operated at 5.3 THz and at 20 K.
+        </a>
+        <em>Applied Physics Letters</em>, 119.20, 2021.
+    </div>
+
+    <div class="publication-item">
+        I. Esmaeil Zadeh, <em>et al.</em>  
+        <a href="https://pubs.aip.org/aip/apl/article/118/19/190502/1062620" style="color: #9b59b6; text-decoration: none;" target="_blank">
+            Superconducting nanowire single-photon detectors: A perspective on evolution, state-of-the-art, future developments, and applications.
+        </a>
+        <em>Applied Physics Letters</em>, 118.19, 2021.
+    </div>
+
+    <div class="publication-item">
+        J. Chang, <em>et al.</em>  
+        <a href="https://pubs.aip.org/aip/app/article/6/3/036114/831362" style="color: #9b59b6; text-decoration: none;" target="_blank">
+            Detecting telecom single photons with 99.5− 2.07+ 0.5% system detection efficiency and high time resolution.
+        </a>
+        <em>APL Photonics</em>, 6.3, 2021.
+    </div>
+
+    <div class="publication-item">
+        J. Chang  
+        <a href="https://research.tudelft.nl/files/96255558/Jin_PhD_thesis_final_version_20210718.pdf" style="color: #9b59b6; text-decoration: none;" target="_blank">
+            Detecting Single Photons with Superconducting Nanowires.
+        </a>
+        2021.
+    </div>
+    
+
+         <!-- Publications 2020 -->
+         <div class="publications-year">2020</div>   
+         <div class="publication-item">
+            S. Steinhauer, <em>et al.</em>  
+            <a href="https://www.mdpi.com/2504-3900/56/1/4" style="color: #9b59b6; text-decoration: none;" target="_blank">
+                Superconducting Nanowire Devices for Light Detection at the Single-Photon Level.
+            </a>
+            <em>Proceedings</em>, Vol. 60, No. 1, MDPI, 2020.
+        </div>
+
+        <div class="publication-item">
+            C. Cirillo, <em>et al.</em>  
+            <a href="https://pubs.aip.org/aip/apl/article/117/17/172602/39066" style="color: #9b59b6; text-decoration: none;" target="_blank">
+                Superconducting nanowire single photon detectors based on disordered NbRe films.
+            </a>
+            <em>Applied Physics Letters</em>, 117.17, 2020.
+        </div>
+        <div class="publication-item">
+            I. Esmaeil Zadeh, <em>et al.</em>  
+            <a href="https://pubs.acs.org/doi/full/10.1021/acsphotonics.0c00433" style="color: #9b59b6; text-decoration: none;" target="_blank">
+                Efficient single-photon detection with 7.7 ps time resolution for photon-correlation measurements.
+            </a>
+            <em>ACS Photonics</em>, 7.7, 2020, pp. 1780-1787.
+        </div>
+
+        <div class="publication-item">
+            I. Esmaeil Zadeh, <em>et al.</em>  
+            <a href="https://phase1.attract-eu.com/wp-content/uploads/2019/05/PIZZICATO-ATTRACT_Final_Conference_article.pdf" style="color: #9b59b6; text-decoration: none;" target="_blank">
+                PIZZICATO: Picosecond Scintillator Timing with Superconducting Nanowire Single-Photon Detectors.
+            </a>
+            2020.
+        </div>
+        
+
+        <!-- Publications 2019 -->
+        <div class="publications-year">2019</div> 
+        
+        <div class="publication-item">
+            J. Chang, <em>et al.</em>  
+            <a href="https://opg.optica.org/ao/fulltext.cfm?uri=ao-58-36-9803&id=423977" style="color: #9b59b6; text-decoration: none;" target="_blank">
+                Multimode-fiber-coupled superconducting nanowire single-photon detectors with high detection efficiency and time resolution.
+            </a>
+            <em>Applied Optics</em>, 58.36, 2019, pp. 9803-9807.
+        </div>
+
+        <div class="publication-item">
+            J. Zichi, <em>et al.</em>  
+            <a href="https://opg.optica.org/oe/fulltext.cfm?uri=oe-27-19-26579&id=418585" style="color: #9b59b6; text-decoration: none;" target="_blank">
+                Optimizing the stoichiometry of ultrathin NbTiN films for high-performance superconducting nanowire single-photon detectors.
+            </a>
+            <em>Optics Express</em>, 27.19, 2019, pp. 26579-26587.
+        </div>
+        
+
+        <div class="publication-item">
+            R. Gourgues, <em>et al.</em>  
+            <a href="https://opg.optica.org/oe/fulltext.cfm?uri=oe-27-17-24601&id=416745" style="color: #9b59b6; text-decoration: none;" target="_blank">
+                Superconducting nanowire single photon detectors operating at temperature from 4 to 7 K.
+            </a>
+            <em>Optics Express</em>, 27.17, 2019, pp. 24601-24609.
+        </div>
+        
+        <div class="publication-item">
+            J. Jia, <em>et al.</em>  
+            <a href="https://www.sciencedirect.com/science/article/pii/S0272884219304572" style="color: #9b59b6; text-decoration: none;" target="_blank">
+                Effect of tungsten based coating characteristics on microstructure and thermal conductivity of diamond/Cu composites prepared by pressueless infiltration.
+            </a>
+            <em>Ceramics International</em>, 45.8, 2019, pp. 10810-10818.
+        </div>
+        
+        <div class="publication-item">
+            J. Chang, <em>et al.</em>  
+            <a href="https://www.spiedigitallibrary.org/conference-proceedings-of-spie/11027/1102705/50-%c2%b5m-diameter-superconducting-nanowire-single-photon-detector-with-sub/10.1117/12.2520778.full" style="color: #9b59b6; text-decoration: none;" target="_blank">
+                Large diameter superconducting nanowire single photon detectors with high efficiency and high time resolution.
+            </a>
+            <em>Quantum Optics and Photon Counting 2019</em>, Vol. 11027, SPIE, 2019.
+        </div>
+        
+        <div class="publication-item">
+            J. Chang, <em>et al.</em>  
+            <a href="https://opg.optica.org/abstract.cfm?uri=cleo_qels-2019-FF1A.2" style="color: #9b59b6; text-decoration: none;" target="_blank">
+                Superconducting nanowire single photon detector with high efficiency and time resolution for multimode fiber coupling.
+            </a>
+            <em>CLEO: QELS_Fundamental Science</em>, FF1A.2, 2019/5/5.
+        </div>
+        
+
+        
+
+
+        
+
+        
+        
+    
+    
+
+
+
+    
+
+
+        
+
+
+
+<!-- footer -->
+ <!-- footer -->
+  <!-- footer -->
+   
+
+    <footer class="footer">
+    <div class="footer-container">
+        <div class="footer-column">
+            <h3>OUR WORK</h3>
+            <ul>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="publications.html">Publications</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>LAB</h3>
+            <ul>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="openings.html">Openings</a></li>
+                <li><a href="student-projects.html">Student Projects</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <a href="https://www.ntu.edu.sg/eee" target="_blank">
+                <img src="NTU_logo.png" alt="NTU_logo" class="footer-logo">
+            </a>
+            <p>Copyright © 2025 Jin Chang - All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+    <script>
+        function toggleMenu() {
+            var mobileMenu = document.getElementById("mobile-menu");
+            var isMenuVisible = mobileMenu.style.display === "flex";
+            if (!isMenuVisible) {
+                mobileMenu.style.display = "flex";
+            } else {
+                mobileMenu.style.display = "none";
+            }
+        }
+
+        // 当点击页面的任何其他区域时，隐藏菜单
+        document.addEventListener('click', function(event) {
+            var mobileMenu = document.getElementById("mobile-menu");
+            var menuButton = document.querySelector('.hamburger-menu');
+            
+            if (!menuButton.contains(event.target) && !mobileMenu.contains(event.target)) {
+                mobileMenu.style.display = "none";
+            }
+        });
+    </script>
+
+
+ <!-- Vanta.js Animation for Research Header -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.rings.min.js"></script>
+ <script>
+     VANTA.RINGS({
+         el: "#vanta-background",
+         mouseControls: true,
+  touchControls: true,
+  gyroControls: true,
+  minHeight: 200.00,
+  minWidth: 1000.00,
+  scale: 1.00,
+  scaleMobile: 1.00,
+  backgroundColor: 0xc22b84,
+  color: 0xff003c,
+  backgroundAlpha: 0.81
+     })
+ </script>
+
+
+<script>
+(function(){
+  const nodes = Array.from(document.querySelectorAll('.publications-year'));
+  const years = nodes.map(n => parseInt(n.textContent.trim(), 10)).filter(y => !isNaN(y));
+  if (years.length < 2) return;
+
+  const minY = Math.min(...years);
+  const maxY = Math.max(...years);
+  const span = Math.max(1, maxY - minY);
+
+  const MIN_W = 260;   // 最短进度条长度 (px)
+  const MAX_W = 260;  // 最长进度条长度 (px)
+
+  nodes.forEach(node => {
+    const y = parseInt(node.textContent.trim(), 10);
+    if (isNaN(y)) return;
+
+    const t = (y - minY) / span; // 0~1 之间的比例
+    const w = Math.round(MIN_W + t * (MAX_W - MIN_W));
+
+    // 创建进度条
+    const bar = document.createElement('span');
+    bar.style.cssText = `
+      display:inline-block;
+      vertical-align:middle;
+      height:6px;
+      width:${w}px;
+      margin-left:12px;
+      border-radius:999px;
+      background:linear-gradient(90deg,#181C62,#D71440);
+      box-shadow:0 1px 3px rgba(0,0,0,.15) inset;
+    `;
+
+const marker = document.createElement('span');
+marker.textContent = "✈️";  // 也可以换成 "✈️⚔️🚀"
+marker.style.cssText = `
+  position:absolute;
+  top:50%;
+  left:${(t * 100).toFixed(2)}%;
+  transform:translate(-50%, -50%);
+  font-size:18px;    /* 调整大小 */
+  line-height:1;
+`;
+
+// 让 bar 作为相对定位容器
+bar.style.position = 'relative';
+bar.appendChild(marker);
+
+
+
+    node.appendChild(bar);
+  });
+})();
+</script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanta.js Background Example</title>
+    <!-- 添加Vanta.js和Three.js的CDN链接 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.birds.min.js"></script>
+</head>
+<body>
+
+    <!-- 这个div将包含Vanta.js效果 -->
+    <div id="vanta-background" style="width: 100%; height: 100vh;">
+        <h1>Welcome to JC Lab</h1>
+        <p>This is an example of using Vanta.js for background animation.</p>
+    </div>
+
+    <script>
+        VANTA.BIRDS({
+            el: "#vanta-background",
+            mouseControls: true,
+  touchControls: true,
+  gyroControls: false,
+  minHeight: 200.00,
+  minWidth: 200.00,
+  scale: 1.00,
+  scaleMobile: 1.00,
+  backgroundColor: 0x56d5ed,
+  color1: 0xcfb2ab,
+  color2: 0xc22bad,
+  colorMode: "lerp",
+  birdSize: 4.00,
+  speedLimit: 10.00,
+  separation: 50.00,
+  cohesion: 50.00,
+  quantity: 3.00,
+  backgroundAlpha: 1.00
+
+        })
+    </script>
+
+</body>
+</html>

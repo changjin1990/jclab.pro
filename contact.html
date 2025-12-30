@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - JC Lab</title>
+    <!-- Link to the external CSS file for styling -->
+    <link rel="stylesheet" href="style.css"> 
+    <!-- Link to Google Fonts for Roboto -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Background for the contact header */
+        .contact-header {
+            background-size: cover;
+            background-position: center;
+            height: 400px; /* Adjust height */
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 150px; /* Increase padding to move title down */
+        }
+
+        /* Contact header title style */
+        .contact-header h1 {
+            color: white;
+            padding: 20px;
+            font-size: 50px;
+            border-radius: 10px;
+            margin: 0;
+        }
+
+        /* Other styles */
+        .contact-content {
+            padding: 40px;
+            font-family: 'Roboto', Arial, sans-serif;
+            margin-top: 50px; /* Ensure content is below header */
+        }
+
+        .contact-box {
+            background-color: rgba(0, 117, 176, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            margin-top: -10px;
+        }
+
+        .footer {
+            background-color: #f9f9f9;
+            padding: 40px 0;
+            border-top: 2px solid #E6E6E6;
+        }
+
+        /* Remove top left "Contact" text */
+        .contact-header h2 {
+            display: none;
+        }
+
+        /* 针对小屏幕 (小于1600px) 显示 hamburger 菜单图标并隐藏导航菜单 */
+        @media screen and (max-width: 1600px) {
+            .nav-menu {
+                display: none !important;
+            }
+            .hamburger-menu {
+                display: flex !important; /* 确保在小屏幕上显示 */
+            }
+        }
+
+        /* 针对大屏幕 (大于1600px) 显示导航菜单并隐藏 hamburger 菜单图标 */
+        @media screen and (min-width: 1600px) {
+            .hamburger-menu {
+                display: none !important; /* 隐藏 hamburger 菜单 */
+            }
+            .nav-menu {
+                display: flex !important; /* 显示导航菜单 */
+            }
+        }
+
+        /* 保持导航栏样式 */
+        .navbar {
+            background-color: #ffffff;
+            padding: 22px 0;
+            border-bottom: 4px solid #E6E6E6;
+            border-top: 1px solid #E6E6E6;
+            position: fixed;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            box-sizing: border-box;
+        }
+
+        .logo-text {
+            white-space: nowrap;
+        }
+
+        .nav-menu {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            width: 100%;
+        }
+
+        .nav-menu li {
+            margin-right: 20px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .hamburger-menu {
+            display: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .hamburger-menu img {
+            width: 50px;
+            height: auto;
+            margin-left: 15px;
+        }
+
+        .mobile-menu {
+            display: none;
+            background-color: #ffffff;
+            position: absolute;
+            top: 80px;
+            right: 0;
+            width: 200px;
+            flex-direction: column;
+            text-align: center;
+            border-top: 1px solid #E6E6E6;
+            z-index: 9999; /* 添加这一行 */
+        }
+
+        .mobile-menu a {
+            padding: 15px;
+            text-decoration: none;
+            color: #333;
+            border-bottom: 1px solid #E6E6E6;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .mobile-menu a:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <a href="index.html" class="logo-text">Jin Chang | Quantum Nanodevices Laboratory, NTU</a>
+    <img src="NTU_Logo.png" alt="Intudo Logo" style="height:50px; margin-left:6px; vertical-align:middle;">
+        <ul class="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="research.html">Research</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="student-projects.html">Student Projects</a></li>
+            <li><a href="publications.html">Publications</a></li>
+            <li><a href="openings.html">Openings</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+
+        <div class="hamburger-menu" onclick="toggleMenu()">
+            <span>Menu</span>
+            <img src="menubar-logo.png" alt="Menu Icon">
+        </div>
+    </nav>
+
+    <div id="mobile-menu" class="mobile-menu">
+        <a href="index.html">Home</a>
+        <a href="research.html">Research</a>
+        <a href="team.html">Team</a>
+        <a href="student-projects.html">Student Projects</a>
+        <a href="publications.html">Publications</a>
+        <a href="openings.html">Openings</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html" class="active">Contact</a>
+    </div>
+
+    <div class="contact-header" id="vanta-background">
+        <h1>Contact Us</h1>
+    </div>
+
+    <style>
+        .contact-header {
+            position: relative;
+            height: 100px;                /* 调整背景高度，可以改 250/350 */
+            display: flex;
+            justify-content: center;      /* 水平居中 */
+            align-items: center;          /* 垂直居中 */
+            text-align: center;
+            color: white;
+        }
+        
+        .contact-header h1 {
+            font-size: 56px;              /* 字体更大 */
+            font-weight: bold;
+            z-index: 1;                   /* 保证文字在背景上层 */
+            margin: 0;   
+            margin-top: 20px;                 /* 去掉默认外边距 */
+        }
+        </style>
+
+
+
+    <div class="contact-content">
+    <h2></h2>
+    <div class="contact-box">
+        <strong>Visiting address:</strong><br>
+        Nanyang Technological University<br>
+        School of Electrical and Electronic Engineering<br>
+        50 Nanyang Avenue<br>
+        Singapore 639798<br><br>
+        
+        <strong>Office address:</strong><br>
+        Block S2, B2C-107<br>
+        50 Nanyang Avenue<br>
+        Singapore 639798
+        
+        
+
+            
+           <p> <div style="display:flex; align-items:center; gap:2px;">
+  <strong>Email address:</strong><br>
+  <span id="emailText">contact@jclab.pro</span>
+  <button onclick="copyEmail()" 
+          title="Copy email address"
+          style="border:none; background:none; cursor:pointer; padding:0; margin-left:2px;">
+    <svg width="15" height="15" viewBox="0 0 24 24" style="vertical-align:middle; fill:#555;">
+      <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z"/>
+    </svg>
+  </button>
+  <span id="copyHint" style="margin-left:6px; font-size:12px; color:#D71440; display:none;">
+    Email address copied!
+  </span>
+</div>
+
+<script>
+function copyEmail(){
+  const email = document.getElementById("emailText").innerText;
+  navigator.clipboard.writeText(email);
+  const hint = document.getElementById("copyHint");
+  hint.style.display = "inline";
+  setTimeout(()=>{ hint.style.display = "none"; }, 1200);
+}
+</script>
+
+
+
+
+
+
+            <br><a href="https://www.google.com/maps/place/School+of+Electrical+and+Electronic+Engineering+(EEE)/@1.3430641,103.6779496,17z/data=!3m1!4b1!4m6!3m5!1s0x31da0f75a53bec9d:0xd08547c621f6dca6!8m2!3d1.3430587!4d103.6805245!16s%2Fg%2F11bwkzbghn?entry=ttu&g_ep=EgoyMDI1MDkyMy4wIKXMDSoASAFQAw%3D%3D" target="_blank">Find us on Google Maps</a>
+        </p>
+
+        <!-- Google Maps Embed -->
+        <div style="margin-top:15px; text-align:center;">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.712325059409!2d103.6779496!3d1.3430641!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da0f75a53bec9d%3A0xd08547c621f6dca6!2sSchool%20of%20Electrical%20and%20Electronic%20Engineering%20(EEE)!5e0!3m2!1sen!2ssg!4v1695628829876!5m2!1sen!2ssg" 
+                width="100%" 
+                height="300" 
+                style="border:1px solid #ccc; border-radius:8px;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </div>
+
+
+    <footer class="footer">
+    <div class="footer-container">
+        <div class="footer-column">
+            <h3>OUR WORK</h3>
+            <ul>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="publications.html">Publications</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>LAB</h3>
+            <ul>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="openings.html">Openings</a></li>
+                <li><a href="student-projects.html">Student Projects</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <a href="https://www.ntu.edu.sg/eee" target="_blank">
+                <img src="NTU_logo.png" alt="NTU_logo" class="footer-logo">
+            </a>
+            <p>Copyright © 2025 Jin Chang - All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+    <!-- Include Vanta.js for animation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.dots.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            VANTA.DOTS({
+                el: "#vanta-background",
+                mouseControls: true,
+                touchControls: true,
+                gyroControls: false,
+                minHeight: 300.00,
+                minWidth: 250.00,
+                scale: 1.00,
+                color: 0xd2e9ea,
+                color2: 0xc4ff20,
+                backgroundColor: 0xb9bb6,
+                size: 7.00,
+                spacing: 97.00
+            });
+        });
+
+        function toggleMenu() {
+            var mobileMenu = document.getElementById("mobile-menu");
+            var isMenuVisible = mobileMenu.style.display === "flex";
+            if (!isMenuVisible) {
+                mobileMenu.style.display = "flex";
+            } else {
+                mobileMenu.style.display = "none";
+            }
+        }
+
+        document.addEventListener('click', function(event) {
+            var mobileMenu = document.getElementById("mobile-menu");
+            var menuButton = document.querySelector('.hamburger-menu');
+            
+            if (!menuButton.contains(event.target) && !mobileMenu.contains(event.target)) {
+                mobileMenu.style.display = "none";
+            }
+        });
+    </script>
+</body>
+</html>

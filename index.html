@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JC Lab - Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- 添加Vanta.js和Three.js的CDN链接 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.birds.min.js"></script>
+    <style>
+        /* 保持原有的导航栏样式 */
+        .navbar {
+            background-color: #ffffff;
+            padding: 22px 0;
+            border-bottom: 4px solid #E6E6E6;
+            border-top: 1px solid #E6E6E6;
+            position: fixed;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            box-sizing: border-box;
+        }
+
+        .logo-text {
+            white-space: nowrap;
+        }
+
+        .nav-menu {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            width: 100%;
+        }
+
+        .nav-menu li {
+            margin-right: 20px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        /* 菜单图标 */
+        .hamburger-menu {
+            display: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .hamburger-menu img {
+            width: 50px;
+            height: auto;
+            margin-left: 15px;
+        }
+
+        .mobile-menu {
+            display: none;
+            background-color: #ffffff;
+            position: absolute;
+            top: 80px;
+            right: 0;
+            width: 200px;
+            flex-direction: column;
+            text-align: center;
+            border-top: 1px solid #E6E6E6;
+            z-index: 9999; /* 添加这一行 */
+        }
+
+        .mobile-menu a {
+            padding: 15px;
+            text-decoration: none;
+            color: #333;
+            border-bottom: 1px solid #E6E6E6;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .mobile-menu a:hover {
+            background-color: #f1f1f1;
+        }
+
+        @media screen and (max-width: 1600px) {
+            .nav-menu {
+                display: none !important;
+            }
+            .hamburger-menu {
+                display: flex;
+            }
+        }
+
+        @media screen and (min-width: 1600px) {
+            .hamburger-menu {
+                display: none;
+            }
+        }
+
+        /* 保持页脚部分 */
+        /* Footer 基础压缩：别让整体被撑高 */
+.footer {
+  padding: 24px 0;           /* 原来偏大，压一压 */
+  background-color: #f9f9f9; /* 保持你原来的色 */
+  border-top: 2px solid #E6E6E6;
+}
+
+/* 三列布局与对齐 */
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr auto; /* 左中自适应，右列根据内容 */
+  column-gap: 32px;
+  align-items: start;        /* ⬅ 关键：三列“顶对齐” */
+}
+
+/* 统一列内排版，去掉多余空白 */
+.footer-column {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;                  /* 轻微分隔 */
+}
+
+.footer-column h3 {
+  margin: 0;                 /* 顶部齐平 */
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.footer-column ul {
+  list-style: none;
+  margin: 0;                 /* 去掉默认外边距 */
+  padding: 0;
+}
+.footer-column ul li { margin: 6px 0; }
+
+/* 右侧：logo + 版权成组且右对齐 */
+.footer-container .footer-column:last-child {
+  align-items: flex-end;     /* 右对齐视觉更稳 */
+}
+
+/* 只放大 logo，本身不撑高 footer */
+.footer-logo {
+  width: 260px;              /* 你想要的放大尺寸；可改成 300/320 */
+  max-height: 80px;          /* 限制高度，避免撑高 footer */
+  object-fit: contain;
+  display: block;            /* 去掉 inline 元素基线空白 */
+  margin: 0;                 /* 去多余间距 */
+  padding: 0;
+  line-height: 0;
+}
+
+.footer-container .footer-column:last-child p {
+  margin: 0;            /* 去掉额外间距 */
+  font-size: 14px;
+  color: #666;
+  text-align: center;   /* 居中在 logo 下方 */
+}
+
+/* logo 与版权行距离紧凑 */
+.footer-container .footer-column:last-child p {
+  margin: 8px 0 0 0;         /* 只留一点点上边距 */
+  text-align: right;
+  color: #666;
+  font-size: 14px;
+}
+
+/* 窄屏下堆叠更好看 */
+@media (max-width: 768px) {
+  .footer-container {
+    grid-template-columns: 1fr; /* 一列堆叠 */
+    row-gap: 16px;
+  }
+  .footer-container .footer-column:last-child {
+    align-items: center;     /* 移动端中间对齐 */
+  }
+
+}
+
+
+        .footer-container .footer-column:last-child {
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* 横向居中 */
+  justify-content: center; /* 纵向居中 */
+  gap: 6px;              /* logo 与版权文字之间的距离 */
+}
+
+        .footer-column {
+            flex: 1;
+            text-align: left;
+        }
+
+.footer-logo {
+  width: 200px;         /* 放大 logo，原来 260px → 改大 */
+  max-height: 200px;    /* 限制最大高度，不会把 footer 撑开 */
+  object-fit: contain;
+  display: block;
+  margin: 0;
+  line-height: 0;
+}
+
+
+
+        .footer p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            color: white;
+            padding: 95px 10px 50px;
+            text-align: center;
+            
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            z-index: 1;
+            position: relative;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 15px;
+            z-index: 1;
+            position: relative;
+            color: #ffffff; /* 白色 */
+            margin-top: -25px; /* 负的 margin-top 上移文本 */
+        }
+
+        .hero .button {
+            background-color: #181C62;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            z-index: 1;
+            position: relative;
+        }
+
+        .hero .button:hover {
+            background-color: #abd745;
+        }
+
+/* 首页照片格式控制 */
+.techniques {
+    display: flex;
+    justify-content: center;   /* 居中 */
+    padding: 20px;
+    text-align: center;
+}
+
+.technique-box {
+    width: 80%;                /* 图片容器更宽，可以占 70% 页面 */
+    max-width: 800px;          /* 限制最大宽度，不会太大 */
+    margin: 0 auto;            /* 自动居中 */
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.technique-box img {
+    width: 70%;       /* 改成小于 100%，比如 80% 宽度 */
+    max-width: 600px; /* 限制图片的最大宽度 */
+    height: auto;
+    margin: 0 auto;
+    display: block;   /* 保证居中 */
+}
+
+.technique-box h3 {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.technique-box p {
+    font-size: 16px;
+    color: #333;
+}
+
+    </style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar">
+    <a href="index.html" class="logo-text">Jin Chang | Quantum Nanodevices Laboratory, NTU</a>
+    <img src="NTU_Logo.png" alt="Intudo Logo" style="height:50px; margin-left:6px; vertical-align:middle;">
+    <ul class="nav-menu">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="student-projects.html">Student Projects</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="openings.html">Openings</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+    <div class="hamburger-menu" onclick="toggleMenu()">
+        <span>Menu</span>
+        <img src="menubar-logo.png" alt="Menu Icon">
+        <!--<img src="\pictures\cat.jpg" alt="Menu Icon">-->
+    </div>
+</nav>
+
+<div id="mobile-menu" class="mobile-menu">
+    <a href="index.html">Home</a>
+    <a href="research.html">Research</a>
+    <a href="team.html">Team</a>
+    <a href="student-projects.html">Student Projects</a>
+    <a href="publications.html">Publications</a>
+    <a href="openings.html">Openings</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="contact.html">Contact</a>
+</div>
+
+<!-- Hero Section -->
+<section class="hero" id="vanta-background">
+    
+    <h1>Quantum Nanodevices Laboratory</h1>
+    
+    <a href="openings.html" class="button">Work with Us</a>
+</section>
+
+<!-- Techniques Section -->
+<section class="techniques">
+    <div class="technique-box">
+        <h3 style="text-align:left; white-space:nowrap; font-size:24px;">Welcome to Jin Chang Group @ Nanyang Technological University, Singapore</h3>
+        <p style="text-align:middle;">
+        We build useful quantum devices and systems for sensing and information technologies. 
+        </p>
+        
+<img src="/pictures/ntu-eee-building.jfif" alt="Group Overview"
+     style="width:100%; max-width:1000px; display:block; margin:20px auto; border-radius:16px;
+            box-shadow:0 22px 50px rgba(215, 20, 64, 0.15), 0 10px 24px rgba(0,0,0,0.25);">
+
+
+      
+    </div>
+  </section>
+  
+
+    
+
+</section>
+
+
+
+<!-- CSS 样式部分 -->
+<style>
+    /* 将 section 居中显示 */
+    .progress-box, .project-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;  /* 水平居中 */
+        justify-content: center;  /* 垂直居中 */
+        padding: 20px;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+        text-align: center;
+        width: 60%; /* 控制盒子宽度，可以根据需要调整 */
+        margin: 30px auto; /* 将盒子居中 */
+    }
+
+    /* 添加悬浮交互效果 */
+    .progress-box:hover, .project-box:hover {
+        transform: translateY(-10px); /* 悬浮时向上移动 */
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* 悬浮时添加更明显的阴影 */
+    }
+
+    /* 图片样式 */
+    .box-image {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+        margin-bottom: 20px; /* 图片下方的间距 */
+    }
+
+    /* 标题样式 */
+    h3 {
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+
+    /* 段落文本样式 */
+    p {
+        font-size: 16px;
+        line-height: 1.6;
+        color: #333;
+    }
+</style>
+
+<!-- Recent Progress Section 
+<section class="progress-box">
+    <img src="your-image-path.jpg" alt="Recent Progress Image" class="box-image"> 
+    <h3>Recent Progress</h3>
+    <p>Is there a way to design...</p>
+</section>-->
+
+<!-- 
+Current Projects Section 
+<section class="project-box">
+    <img src="your-image-path.jpg" alt="Current Project Image" class="box-image"> 
+    <h3>Nanomotor-powered membrane machines!</h3>
+    <p>Inspired by ATP synthase...</p>
+</section> 
+-->
+
+
+
+
+<!-- News and Updates Section -->
+<!-- News and Updates Section -->
+<!-- News and Updates Section -->
+<!-- News and Updates Section -->
+<section class="news">
+    <h2 style="font-size: 28px; color: #333; margin-bottom: 20px;">News and Updates</h2>
+
+    <div class="news-container" id="news-container">
+        <!-- Example News Items -->
+        <div class="news-item">
+            <div class="news-date"><strong>2nd March 2026</strong></div>
+            <div class="news-content">Our group will officially begin soon.</div>
+        </div>
+
+        
+    </div>
+
+    <!-- "See All News" Link -->
+    <p style="font-size: 14px; color: #007bff; margin-top: 20px;">
+        <a href="javascript:void(0)" id="see-all-news" style="text-decoration: none;">See All News &#x25BC;</a>
+
+    </p>
+
+    <!-- "Collapse News" Link (initially hidden) -->
+    <p style="font-size: 14px; color: #007bff; margin-top: 20px;">
+        <a href="javascript:void(0)" id="collapse-news" style="display: none; text-decoration: none;">Collapse News &#x25B2;</a>
+
+    </p>
+</section>
+
+<!-- Styles for News Section -->
+<style>
+    .news {
+        font-family: 'Roboto', sans-serif;
+        padding: 40px;
+        max-width: 800px;
+        margin: 0 auto;
+        text-align: left;
+    }
+
+    .news h2 {
+        font-size: 28px;
+        color: #333;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .news-container .news-item {
+        display: flex;
+        margin-bottom: 20px;
+        justify-content: flex-start;
+    }
+
+    .news-item .news-date {
+        width: 180px; /* 增加宽度来调整间距 */
+        font-weight: bold;
+        color: #333;
+        margin-right: 20px; /* 增加时间和内容之间的间距 */
+    }
+
+    .news-content {
+        background-color: #f5f5f5;
+        padding: 10px 15px;
+        border-radius: 5px;
+        max-width: 600px;
+        font-size: 16px; /* 设置与其他内容相同的字体大小 */
+        line-height: 1.6;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .news-item:hover .news-content {
+        background-color: #e0e0e0;
+    }
+
+    #see-all-news, #collapse-news {
+        display: none; /* 默认隐藏 */
+    }
+</style>
+
+<!-- Script to show more news if more than 7 items -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const newsContainer = document.getElementById("news-container");
+        const seeAllNewsLink = document.getElementById("see-all-news");
+        const collapseNewsLink = document.getElementById("collapse-news");
+
+        // Check if news items exceed 7
+        const newsItems = newsContainer.querySelectorAll('.news-item');
+        if (newsItems.length > 3) {
+            // Show only the first 7 items
+            for (let i = 3; i < newsItems.length; i++) {
+                newsItems[i].style.display = 'none';
+            }
+
+            // Show "See All News" link
+            seeAllNewsLink.style.display = 'block';
+
+            // Add click event to show all news items
+            seeAllNewsLink.addEventListener('click', function () {
+                for (let i = 3; i < newsItems.length; i++) {
+                    newsItems[i].style.display = 'flex';
+                }
+                seeAllNewsLink.style.display = 'none';
+                collapseNewsLink.style.display = 'block';
+            });
+
+            // Add click event to collapse news items
+            collapseNewsLink.addEventListener('click', function () {
+                for (let i = 3; i < newsItems.length; i++) {
+                    newsItems[i].style.display = 'none';
+                }
+                collapseNewsLink.style.display = 'none';
+                seeAllNewsLink.style.display = 'block';
+            });
+        }
+    });
+</script>
+
+
+<!-- News and Updates Section -->
+<!-- News and Updates Section -->
+<!-- News and Updates Section -->
+
+
+<!-- Footer Section -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-column">
+            <h3>OUR WORK</h3>
+            <ul>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="publications.html">Publications</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>LAB</h3>
+            <ul>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="openings.html">Openings</a></li>
+                <li><a href="student-projects.html">Student Projects</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <a href="https://www.ntu.edu.sg/eee" target="_blank">
+                <img src="NTU_logo.png" alt="NTU_logo" class="footer-logo">
+            </a>
+            <p>Copyright © 2025 Jin Chang - All rights reserved.
+</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Vanta.js 动态背景脚本 -->
+<script>
+    VANTA.BIRDS({
+        el: "#vanta-background",
+        mouseControls: true,
+  touchControls: true,
+  gyroControls: false,
+  minHeight: 200.00,
+  minWidth: 200.00,
+  scale: 1.00,
+  scaleMobile: 1.00,
+  backgroundColor: 0xd71440
+    });
+</script>
+
+<script>
+    function toggleMenu() {
+        var mobileMenu = document.getElementById("mobile-menu");
+        var isMenuVisible = mobileMenu.style.display === "flex";
+        if (!isMenuVisible) {
+            mobileMenu.style.display = "flex";
+        } else {
+            mobileMenu.style.display = "none";
+        }
+    }
+
+    document.addEventListener('click', function(event) {
+        var mobileMenu = document.getElementById("mobile-menu");
+        var menuButton = document.querySelector('.hamburger-menu');
+        
+        if (!menuButton.contains(event.target) && !mobileMenu.contains(event.target)) {
+            mobileMenu.style.display = "none";
+        }
+    });
+</script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Openings - JC Lab</title>
+    <!-- Link to Google Fonts for Roboto -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* 固定导航栏在页面顶部，并自适应宽度 */
+        .navbar {
+            background-color: #ffffff;
+            padding: 22px 0;
+            border-bottom: 4px solid #E6E6E6;
+            border-top: 1px solid #E6E6E6;
+            position: fixed;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            box-sizing: border-box;
+        }
+
+        .logo-text {
+            white-space: nowrap;
+        }
+
+        .nav-menu {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            width: 100%;
+        }
+
+        .nav-menu li {
+            margin-right: 20px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .hamburger-menu {
+            display: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .hamburger-menu img {
+            width: 50px;
+            height: auto;
+            margin-left: 15px;
+        }
+
+        .hamburger-menu span {
+            font-size: 18px;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .mobile-menu {
+            display: none;
+            background-color: #ffffff;
+            position: absolute;
+            top: 80px;
+            right: 0;
+            width: 200px;
+            flex-direction: column;
+            text-align: center;
+            border-top: 1px solid #E6E6E6;
+            z-index: 9999; /* 添加这一行 */
+        }
+
+        .mobile-menu a {
+            padding: 15px;
+            text-decoration: none;
+            color: #333;
+            border-bottom: 1px solid #E6E6E6;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .mobile-menu a:hover {
+            background-color: #f1f1f1;
+        }
+
+        @media screen and (max-width: 1600px) {
+            .nav-menu {
+                display: none !important;
+            }
+            .hamburger-menu {
+                display: flex;
+            }
+        }
+
+        @media screen and (min-width: 1600px) {
+            .hamburger-menu {
+                display: none;
+            }
+        }
+
+        body {
+            padding-top: 80px;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        /* Openings Title */
+        .openings-header {
+            background-color: #e27bf0; /* Blue background */
+            padding: 50px 0;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .openings-header h1 {
+            font-size: 50px;
+            margin: 0;
+        }
+
+        /* Join Us button styling */
+        .join-us-button {
+            background-color: #973491;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 24px;
+            cursor: pointer;
+            margin-top: 20px;
+            display: inline-block;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .join-us-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Openings content section */
+        .openings-content {
+            padding: 40px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .openings-content h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .openings-content p {
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .openings-content a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .openings-content a:hover {
+            text-decoration: underline;
+        }
+
+        /* Bullet points list */
+        .openings-content ul {
+            list-style-type: disc;
+            margin-left: 40px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <a href="index.html" class="logo-text">Jin Chang | Quantum Nanodevices Laboratory, NTU</a>
+    <img src="NTU_Logo.png" alt="Intudo Logo" style="height:50px; margin-left:6px; vertical-align:middle;">
+        <ul class="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="research.html">Research</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="student-projects.html">Student Projects</a></li>
+            <li><a href="publications.html">Publications</a></li>
+            <li><a href="openings.html" class="active">Openings</a></li>
+            
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+
+        <div class="hamburger-menu" onclick="toggleMenu()">
+            <span>Menu</span>
+            <img src="menubar-logo.png" alt="Menu Icon">
+        </div>
+    </nav>
+
+    <div id="mobile-menu" class="mobile-menu">
+        <a href="index.html">Home</a>
+        <a href="research.html">Research</a>
+        <a href="team.html">Team</a>
+        <a href="student-projects.html">Student Projects</a>
+        <a href="publications.html">Publications</a>
+        <a href="openings.html" class="active">Openings</a>
+        
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+    </div>
+
+    <!-- Openings Header Section -->
+    <section class="openings-header" id="vanta-background">
+        <h1>Openings</h1>
+        <a href="#openings-content" class="join-us-button">Join Us!</a>
+    </section>
+
+    <!-- Openings Content -->
+    <section class="openings-content" id="openings-content">
+        <p>
+  Dr. Jin Chang is affiliated with the
+  <a href="https://www.ntu.edu.sg/" target="_blank" rel="noopener noreferrer">
+    Nanyang Technological University
+  </a>
+  as an Assistant Professor in the School of Electrical and Electronic Engineering (EEE, NTU).
+  His research group focuses on the development of quantum nanophotonic devices and experimental platforms for future sensing and information processing.
+
+</p>
+
+<p>
+  The <a href="https://www.ntu.edu.sg/eee" target="_blank" rel="noopener noreferrer">
+    School of Electrical and Electronic Engineering
+  </a> is one of the founding schools of
+  Nanyang Technological University and is internationally recognized for excellence in
+  education and research. It is one of the largest EEE schools
+  globally and was ranked 4<sup>th</sup> worldwide in the 2025 QS World University Rankings by
+  Subject.
+</p>
+
+<p>
+  The group currently has openings for PhD students and postdoctoral researchers.
+  For further information, please contact
+  <a href="mailto:positions@jclab.pro">positions@jclab.pro</a>.
+</p>
+
+
+
+
+<h2>For PhD Applications</h2>
+
+<ol>
+  <li>
+    We seek highly motivated and talented PhD candidates with strong backgrounds in
+    applied physics, optics, electrical engineering, materials science, or related fields to
+    join our research group.
+  </li>
+  <span style="display:block; margin-top:16px;"></span>
+
+  <li>
+    Applicants should meet the
+    <a href="https://www.ntu.edu.sg/eee/admissions/programmes/graduate-programmes/detail/eee-doctor-of-philosophy-%28ph.d%29-programme#admission"
+       target="_blank" rel="noopener noreferrer">
+      PhD admission requirements
+    </a>
+    of the School of Electrical and Electronic Engineering at
+    NTU. English proficiency requirements follow NTU regulations. Please see the link above for details.
+  </li>
+  <span style="display:block; margin-top:16px;"></span>
+
+  <li>
+    Interested candidates are encouraged to send a CV, brief statement of research
+    interests, contact information of at least two referees, and their bachelor degree
+    transcript to
+    <a href="mailto:positions@jclab.pro">positions@jclab.pro</a>.
+    Further application details will be provided upon contact. Please consider using the subject line format: "PhD Application – [Name, Affiliation, Key Background]". 
+  </li>
+  <span style="display:block; margin-top:16px;"></span>
+
+  <li>
+    We are pleased to support suitable applicants in applying for relevant Singapore-based and international scholarships.
+    For further information and guidance, please contact
+    <a href="mailto:positions@jclab.pro">positions@jclab.pro</a>.
+  </li>
+</ol>
+
+
+
+
+<h2>For Postdoctoral Applications</h2>
+
+<ol>
+  <li>
+    We are seeking highly motivated postdoctoral researchers with strong experimental
+    backgrounds in quantum photonics, applied physics, integrated photonic devices, optomechanics,
+    or closely related areas.
+  </li>
+  <span style="display:block; margin-top:16px;"></span>
+
+  <li>
+    Candidates are expected to hold a PhD degree in the above-mentioned areas by the start of the appointment.
+  </li>
+  <span style="display:block; margin-top:16px;"></span>
+
+  <li>
+    Interested applicants are encouraged to send a CV, a brief statement of research
+    interests, and contact information of at least two referees to
+    <a href="mailto:positions@jclab.pro">positions@jclab.pro</a>.
+    Further details will be discussed with shortlisted candidates.
+  </li>
+  <span style="display:block; margin-top:16px;"></span>
+
+  <li>
+    In addition to Research Fellow positions funded by our group, we will support suitable candidates in preparing application materials for relevant postdoctoral fellowship programmes.
+  </li>
+</ol>
+
+
+
+
+<h2>One more thing</h2>
+
+        <p> In addition, if you have an ambitious experimental idea that you would like to pursue
+together with our group, please feel free to reach out to us. We are always interested
+in exploring novel and challenging experiments and are happy to support such efforts
+through state-of-the-art nanofabrication facilities, advanced measurement infrastructure,
+and a highly motivated team. </p>
+
+        
+         
+    </section>
+
+    <footer class="footer">
+    <div class="footer-container">
+        <div class="footer-column">
+            <h3>OUR WORK</h3>
+            <ul>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="publications.html">Publications</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>LAB</h3>
+            <ul>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="openings.html">Openings</a></li>
+                <li><a href="student-projects.html">Student Projects</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <a href="https://www.ntu.edu.sg/eee" target="_blank">
+                <img src="NTU_logo.png" alt="NTU_logo" class="footer-logo">
+            </a>
+            <p>Copyright © 2025 Jin Chang - All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+    <script>
+        function toggleMenu() {
+            var mobileMenu = document.getElementById("mobile-menu");
+            var isMenuVisible = mobileMenu.style.display === "flex";
+            if (!isMenuVisible) {
+                mobileMenu.style.display = "flex";
+            } else {
+                mobileMenu.style.display = "none";
+            }
+        }
+
+        // 当点击页面的任何其他区域时，隐藏菜单
+        document.addEventListener('click', function(event) {
+            var mobileMenu = document.getElementById("mobile-menu");
+            var menuButton = document.querySelector('.hamburger-menu');
+            
+            if (!menuButton.contains(event.target) && !mobileMenu.contains(event.target)) {
+                mobileMenu.style.display = "none";
+            }
+        });
+    </script>
+
+<!-- 引入 p5.min.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
+
+<!-- 引入 three.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+
+<!-- 引入 vanta.trunk.min.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.trunk.min.js"></script>
+
+<!-- Vanta.js 动画初始化 -->
+<script>
+    VANTA.TRUNK({
+        el: "#vanta-background",  // 确保这个 ID 与页面上的元素 ID 匹配
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.00,
+        minWidth: 400.00,
+        scale: 1.00,
+        scaleMobile: 1.00,
+        backgroundColor: 0x1e2442,
+        color: 0xf41e66,
+        spacing: 1.00,
+        chaos: 7.00
+    })
+</script>
+
+</body>
+</html>

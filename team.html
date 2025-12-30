@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team - JC Lab</title>
+    <!-- Link to Google Fonts for Roboto -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .navbar {
+            background-color: #ffffff;
+            padding: 22px 0;
+            border-bottom: 4px solid #E6E6E6;
+            border-top: 1px solid #E6E6E6;
+            position: fixed;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            box-sizing: border-box;
+        }
+
+        .logo-text {
+            white-space: nowrap;
+        }
+
+        .nav-menu {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            width: 100%;
+        }
+
+        .nav-menu li {
+            margin-right: 20px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .hamburger-menu {
+            display: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .hamburger-menu img {
+            width: 50px;
+            height: auto;
+            margin-left: 15px;
+        }
+
+        .mobile-menu {
+            display: none;
+            background-color: #ffffff;
+            position: absolute;
+            top: 80px;
+            right: 0;
+            width: 200px;
+            flex-direction: column;
+            text-align: center;
+            border-top: 1px solid #E6E6E6;
+            z-index: 9999; /* 添加这一行 */
+        }
+
+        .mobile-menu a {
+            padding: 15px;
+            text-decoration: none;
+            color: #333;
+            border-bottom: 1px solid #E6E6E6;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .mobile-menu a:hover {
+            background-color: #f1f1f1;
+        }
+
+        @media screen and (max-width: 1600px) {
+            .nav-menu {
+                display: none !important;
+            }
+            .hamburger-menu {
+                display: flex;
+            }
+        }
+
+        @media screen and (min-width: 1600px) {
+            .hamburger-menu {
+                display: none;
+            }
+        }
+
+        body {
+            padding-top: 80px;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        /* Team Title Section */
+        .team-header {
+            background-color: #007bff;
+            padding: 50px 0;
+            text-align: center;
+            color: white;
+        }
+
+        .team-header h1 {
+            font-size: 50px;
+            margin: 0;
+        }
+
+        /* Team Members Section */
+        .team-content {
+            padding: 40px;
+            text-align: center;
+        }
+
+        .team-content h2 {
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+
+        /* Grid layout for team members */
+        .team-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        /* Team member card */
+        .team-member {
+            width: 220px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .team-member img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .team-member h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .team-member p {
+            font-size: 14px;
+            margin-bottom: 10px;
+            color: #666;
+        }
+
+        .team-member a {
+            font-size: 14px;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        /* Hover effect on team member */
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .social-icons img {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+        }
+
+        .want-more-button {
+            display: block;
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 8px;
+            margin-top: 10px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 50%;
+            text-align: center;
+        }
+    </style>
+
+    <!-- Adding Vanta.js and Three.js for background animation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.net.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            VANTA.NET({
+                el: ".team-header",
+                mouseControls: true,
+                touchControls: true,
+                gyroControls: WebTransportDatagramDuplexStream,
+                minHeight: 20.00,
+                minWidth: 250.00,
+                scale: 1.00,
+                scaleMobile: 1.00,
+                points: 15.00,
+                maxDistance: 35.00,
+                spacing: 32
+            });
+        });
+    </script>
+</head>
+<body>
+    <!-- Navigation Bar / 导航栏 -->
+    <nav class="navbar">
+        <a href="index.html" class="logo-text">Jin Chang | Quantum Nanodevices Laboratory, NTU</a>
+    <img src="NTU_Logo.png" alt="Intudo Logo" style="height:50px; margin-left:6px; vertical-align:middle;">
+        <ul class="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="research.html">Research</a></li>
+            <li><a href="team.html" class="active">Team</a></li>
+            <li><a href="student-projects.html">Student Projects</a></li>
+            <li><a href="publications.html">Publications</a></li>
+            <li><a href="openings.html">Openings</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+
+        <div class="hamburger-menu" onclick="toggleMenu()">
+            <span>Menu</span>
+            <img src="menubar-logo.png" alt="Menu Icon">
+        </div>
+    </nav>
+
+    <div id="mobile-menu" class="mobile-menu">
+        <a href="index.html">Home</a>
+        <a href="research.html">Research</a>
+        <a href="team.html" class="active">Team</a>
+        <a href="student-projects.html">Student Projects</a>
+        <a href="publications.html">Publications</a>
+        <a href="openings.html">Openings</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+    </div>
+
+    <!-- Team Header Section with Vanta.js Background -->
+    <section class="team-header">
+        <h1>Team</h1>
+    </section>
+
+
+
+    <style>
+        .team-header {
+            position: relative;
+            height: 100px;                /* 调整背景高度，可以改 250/350 */
+            display: flex;
+            justify-content: center;      /* 水平居中 */
+            align-items: center;          /* 垂直居中 */
+            text-align: center;
+            color: white;
+        }
+        
+        .team-header h1 {
+            font-size: 56px;              /* 字体更大 */
+            font-weight: bold;
+            z-index: 1;                   /* 保证文字在背景上层 */
+            margin: 0;   
+            margin-top: 20px;                 /* 去掉默认外边距 */
+        }
+        </style>
+
+
+
+
+
+    <!-- Current Team Members Section -->
+    <section class="team-content">
+        <h2>Current Team Members</h2>
+
+        <div class="team-grid">
+            <!-- Team member example -->
+            <div class="team-member">
+                <img src="pictures/team-members/jin-chang.jpg" alt="Jin Chang"
+                style="width:225px; height:300px; object-fit:cover; border-radius:8px;">
+                <h3>Jin Chang</h3>
+                <p>Assistant Professor</p>
+                <a href="mailto:contact@jclab.pro" style="color: gray; text-decoration: none;">Email: contact@jclab.pro</a>
+                
+                <!-- Social icons -->
+                <div class="social-icons">
+                    <a href="https://scholar.google.com/citations?user=ElpoVA4AAAAJ&hl=en" target="_blank">
+                        <img src="google-scholar-icon.png" alt="googlescholar" style=" width: 26px; height: 26px; border-radius: 0;">
+                    </a>
+
+                    <a href="https://www.researchgate.net/profile/Jin-Chang" target="_blank">
+                        <img src="researchgate-icon.png" alt="researchgate" style=" width: 30px; height: 30px; border-radius: 0;">
+                    </a>
+
+                    <a href="https://www.linkedin.com/in/jinchanglab" target="_blank">
+                        <img src="linkedin-icon.png" alt="LinkedIn" style="width: 32px; height: 32px; border-radius: 0;">
+                    </a>
+
+                    <a href="https://orcid.org/0000-0003-1101-8516" target="_blank">
+                        <img src="orcid-icon.png" alt="orcid" style="width: 45px; height: 25px; border-radius: 0;" >
+                    </a>
+
+
+
+                </div>
+
+                <!-- Want to know more button -->
+                <button id="more-info-button" style="margin-top: -10px; background-color: black; color: white; border: none; padding: 5px 10px; cursor: pointer; border-radius: 5px;">Want to know more?</button>
+
+            </div>
+
+            <!-- Additional team members -->
+        
+             <div class="team-member">
+                <img src="pictures/team-members/group-member.png" alt="New Member"
+                style="width:225px; height:300px; object-fit:cover; border-radius:8px;">
+                <h3>This could be you!</h3>
+                <p>Check <a href="openings.html" style="color: rgb(0, 183, 255); text-decoration: underline;">Openings</a> for more info</p>
+                
+            </div>
+
+
+ <!-- 
+            <div class="team-member">
+                <img src="team-member1.jpg" alt="Jorn Vekemans">
+                <h3>Jorn Vekemans</h3>
+                <p>PhD Student, 2024</p>
+            </div>
+
+        </div>
+-->        
+    </section>
+
+    <!-- Modal for "Want to know more点开个人页面之后更多东西弹出来" -->
+    <div id="more-info-modal" class="modal">
+        <div class="modal-content" id="vanta-bg">
+            <!-- Name and Title Section -->
+            <h2>Jin Chang</h2>
+            <p>Assistant Professor</p>
+    
+            <!-- Office Information Section -->
+    
+            <h3>Office Address:</h3>
+            <p>Nanyang Technological University<br>School of Electrical and Electronic Engineering<br>Block S2, B2c-107<br>50, Nanyang Avenue <br>Singapore 639798</p>
+    
+    
+            <h3>Email:</h3>
+            <p><a href="mailto:contact@jclab.pro" style="color: white;">contact@jclab.pro</a></p>
+    
+            <h3>Education:</h3>
+            <ul>
+                <li>Ph.D. Applied Physics, TUDelft, 2021</li>
+                
+            </ul>
+    
+            <!-- Interests Section -->
+            <h3>Interests:</h3>
+            <ul>
+                <li>Superconducting nanowire single-photon detectors</li>
+                <li>Optomechanics and hybrid quantum system</li>
+                <li>Advanced nanofabrication and integration</li>
+                <li>Quantum sensing and information applications</li>
+            </ul>
+    
+            <!-- Selected Awards & Honors Section -->
+            <h3>Invited Talks</h3>
+<ul>
+    <li>“Light-matter interaction using superconducting nanowires and high-Q resonators,” Research Seminar, Nanyang Technological University, Singapore, 2023</li></u>
+    <li>“Recent advances in superconducting nanowire single-photon detectors (SNSPDs),” CQT Seminar, National University of Singapore, Singapore, 2023</u></li>
+    <li>“Development of SNSPDs for Future Emerging Quantum Optics Applications,” International Conference on Quantum Photonics, QPhotoniX, China, 2023</u></li>
+    <li>“Research Progress of Superconducting Nanowire Single-Photon Detectors and Their Applications in Space Exploration,” 10th Symposium on Novel Optoelectronic Detection Technology and Application, China, 2024</u></li>
+    <li>"Quantum Sensing and Information Processing with Superconducting Nanowires and Mechanical Resonators", University of Glasgow, UK, 2024</u></li>
+    <li>"Superconducting Nanowire Single-Photon Detectors for Quantum Sensing: Principles, Physics, and Future Frontiers", Imperial College London, UK, 2025</u></li>
+</ul>
+
+
+<h3>Conference Organization</h3>
+<ul>
+    <li><u>Session Chair</u>: Quantum Optics and Quantum Sensing. 14th International Conference on Information Optics and Photonics, CIOP, China, 2023</li>
+    <li><u>Session Chair</u>: Quantum Optomechanics and Quantum Precision Measurement. The International Conference on Quantum Photonics, QPhotoniX, China, 2023</li>
+
+
+</ul>
+
+
+<h3>Invited Reviewer for Scientific Journals and Funding</h3>
+<ul>
+    <li>Regular reviewer for Optica, ACS Photonics, Applied Physics Letter, Photonics Research, Optics Express, iScience, and Scientific Report, etc.</li>
+    <li>Invited Reviewer for U.S.A. Department of Energy (D.O.E) proposal, 2023</li>
+    <li>Invited Reviewer for European Commission Horizon 2020 project, 2024</li>
+    <li>Invited reviewer for Swiss National Science Foundation (SNSF) & Innosuisse BRIDGE Quantum proposal, 2025</li>
+
+</ul>
+
+    
+
+<!-- Selected Publications Section -->
+
+
+
+<h3>Patent:</h3>
+<ul>
+    <li>I.E. Zadeh, J.W.N.Los, and J. Chang, <em>US Patent</em>, 2024</li>
+    <li>S. Gröblacher, J. Chang, <em>EU Patent</em>, 2025</li>
+</ul>
+<h4><a href="https://scholar.google.com/citations?user=ElpoVA4AAAAJ&hl=en" target="_blank" style="color: white;">For a complete and updated list of publications, please visit our Google Scholar profile.</a></h4>
+
+
+        </div>
+    </div>
+    
+    
+    <!-- 内联CSS样式 -->
+    <style>
+        .modal {
+            display: none; /* 初始状态为隐藏 */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* 半透明背景 */
+            overflow: hidden; /* 禁止背景滚动 */
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+    
+        .modal-content {
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            width: 50%; /* 设置宽度为 50% */
+            max-height: 70%; /* 设置高度为 70% */
+            overflow-y: auto; /* 添加滚动条 */
+            text-align: left;
+            font-family: 'Roboto', sans-serif;
+            position: relative;
+            color: #fcfafa; /* 在这里设置字体颜色，例如黑色 */
+        }
+    
+        .modal-content h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+    
+        .modal-content p, .modal-content li {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+    
+        .modal-content h3 {
+            font-size: 22px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+    
+        .modal-content ul {
+            padding-left: 20px;
+        }
+    
+        .vanta-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* 确保背景在文字后面 */
+        }
+    </style>
+    
+    <!-- Vanta.js 动画脚本 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.topology.min.js"></script>
+    <script>
+        VANTA.TOPOLOGY({
+            el: "#vanta-bg", // 选择器，确保与HTML结构中的ID一致
+            mouseControls: true,
+  touchControls: true,
+  gyroControls: true,
+  minHeight: 4500.00,
+  minWidth: 1200.00,
+  scale: 1.00,
+  scaleMobile: 1.00,
+  color: 0xf41c42,
+  backgroundColor: 0x39bade
+        });
+    </script>
+    
+    
+    
+
+    <!-- JavaScript 部分 -->
+    <script>
+        // 获取按钮和弹窗元素
+        const moreInfoButton = document.getElementById("more-info-button");
+        const moreInfoModal = document.getElementById("more-info-modal");
+
+        // 当点击按钮时，显示弹窗
+        moreInfoButton.addEventListener("click", function() {
+            moreInfoModal.style.display = "flex";
+        });
+
+        // 当点击弹窗外部区域时，隐藏弹窗
+        window.addEventListener("click", function(event) {
+            if (event.target === moreInfoModal) {
+                moreInfoModal.style.display = "none";
+            }
+        });
+
+        // 新增：处理导航栏的显示和隐藏
+        function toggleMenu() {
+            var mobileMenu = document.getElementById("mobile-menu");
+            if (mobileMenu.style.display === "flex") {
+                mobileMenu.style.display = "none";
+            } else {
+                mobileMenu.style.display = "flex";
+            }
+        }
+
+        // 隐藏移动菜单，如果点击发生在菜单外部
+        document.addEventListener('click', function(event) {
+            var mobileMenu = document.getElementById("mobile-menu");
+            var menuButton = document.querySelector('.hamburger-menu');
+            
+            if (!menuButton.contains(event.target) && !mobileMenu.contains(event.target)) {
+                mobileMenu.style.display = "none";
+            }
+        });
+    </script>
+
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-column">
+            <h3>OUR WORK</h3>
+            <ul>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="publications.html">Publications</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>LAB</h3>
+            <ul>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="openings.html">Openings</a></li>
+                <li><a href="student-projects.html">Student Projects</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <a href="https://www.ntu.edu.sg/eee" target="_blank">
+                <img src="NTU_logo.png" alt="NTU_logo" class="footer-logo">
+            </a>
+            <p>Copyright © 2025 Jin Chang - All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

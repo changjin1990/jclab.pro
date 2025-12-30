@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research - JC Lab</title>
+    <!-- Link to Google Fonts for Roboto / 引用Google字体Roboto -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* 固定导航栏在页面顶部，并自适应宽度 */
+        .navbar {
+            background-color: #ffffff;
+            padding: 22px 0;
+            border-bottom: 4px solid #E6E6E6;
+            border-top: 1px solid #E6E6E6;
+            position: fixed;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            box-sizing: border-box;
+        }
+
+        /* 确保 "JC Lab@University of Glasgow" 保持在一行 */
+        .logo-text {
+            white-space: nowrap;
+        }
+
+        .nav-menu {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            width: 100%;
+        }
+
+        .nav-menu li {
+            margin-right: 20px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .hamburger-menu {
+            display: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .hamburger-menu img {
+            width: 50px;
+            height: auto;
+            margin-left: 15px;
+        }
+
+        .hamburger-menu span {
+            font-size: 18px;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .mobile-menu {
+            display: none;
+            background-color: #ffffff;
+            position: absolute;
+            top: 80px;
+            right: 0;
+            width: 200px;
+            flex-direction: column;
+            text-align: center;
+            border-top: 1px solid #E6E6E6;
+            z-index: 9999; /* 添加这一行 */
+        }
+
+        .mobile-menu a {
+            padding: 15px;
+            text-decoration: none;
+            color: #333;
+            border-bottom: 1px solid #E6E6E6;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .mobile-menu a:hover {
+            background-color: #f1f1f1;
+        }
+
+        @media screen and (max-width: 1600px) {
+            .nav-menu {
+                display: none !important;
+            }
+            .hamburger-menu {
+                display: flex;
+            }
+        }
+
+        @media screen and (min-width: 1600px) {
+            .hamburger-menu {
+                display: none;
+            }
+        }
+
+        body {
+            padding-top: 80px;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        /* Research Title */
+        .research-header {
+            padding: 50px 0;
+            text-align: center;
+            color: white;
+        }
+
+        .research-header h1 {
+            font-size: 50px;
+            margin: 0;
+        }
+
+        /* Main title (e.g. Nanoengine) */
+        .research-intro h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-top: 40px;
+            color: #1a8ccb; /* Example color */
+        }
+
+        /* Subheading below the main title */
+        .research-intro h3 {
+            text-align: center;
+            font-size: 28px;
+            color: #333;
+        }
+
+        /* Research content section */
+        .research-content {
+            padding: 40px 20px;
+        }
+
+        .research-intro p {
+            text-align: center;
+            font-size: 18px;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 20px auto;
+        }
+
+        /* Current Projects Title */
+        .current-projects {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .current-projects h2 {
+            font-size: 30px;
+            margin-bottom: 30px;
+        }
+
+        /* Project box styling */
+        .project-box {
+            border: 2px solid #e6e6e6;
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        /* Hover effect on project box */
+        .project-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Project title inside the box */
+        .project-box h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .project-box p {
+            font-size: 16px;
+            color: #666;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar / 导航栏 -->
+    <nav class="navbar">
+        <a href="index.html" class="logo-text">Jin Chang | Quantum Nanodevices Laboratory, NTU</a>
+    <img src="NTU_Logo.png" alt="Intudo Logo" style="height:50px; margin-left:6px; vertical-align:middle;">
+        <ul class="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="research.html" class="active">Research</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="student-projects.html">Student Projects</a></li>
+            <li><a href="publications.html">Publications</a></li>
+            <li><a href="openings.html">Openings</a></li>
+            
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+
+        <div class="hamburger-menu" onclick="toggleMenu()">
+            <span>Menu</span>
+            <img src="menubar-logo.png" alt="Menu Icon">
+        </div>
+    </nav>
+
+    <div id="mobile-menu" class="mobile-menu">
+        <a href="index.html">Home</a>
+        <a href="research.html" class="active">Research</a>
+        <a href="team.html">Team</a>
+        <a href="student-projects.html">Student Projects</a>
+        <a href="publications.html">Publications</a>
+        <a href="openings.html">Openings</a>
+        
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+    </div>
+
+    <!-- Research Header Section with Vanta Background -->
+    <section class="research-header" id="vanta-background">
+        <h1>Research</h1>
+    </section>
+
+    <style>
+        .research-header {
+            position: relative;
+            height: 100px;                /* 调整背景高度，可以改 250/350 */
+            display: flex;
+            justify-content: center;      /* 水平居中 */
+            align-items: center;          /* 垂直居中 */
+            text-align: center;
+            color: white;
+        }
+        
+        .research-header h1 {
+            font-size: 56px;              /* 字体更大 */
+            font-weight: bold;
+            z-index: 1;                   /* 保证文字在背景上层 */
+            margin: 0;   
+            margin-top: 20px;                 /* 去掉默认外边距 */
+        }
+        </style>
+
+<!-- Research Overview: Techniques Section -->
+<section class="techniques">
+    <div class="technique-box">
+        <img src="/pictures/WG_SNSPD.PNG" alt="SNSPD" style="width:100%">
+        <h3>Quantum Optics Experiments with Superconducting Devices</h3>
+        <p>Quantum optics experiments enabled by single-photon counting technologies.</p>
+    </div>
+
+    <div class="technique-box">
+        <img src="/pictures/IMPS.jpg" alt="Localization Microscopy" style="width:100%">
+        <h3>Optomechanical Sensing with Nanomechanical Devices</h3>
+        <p>Precision sensing enabled by high-Q mechanical resonators.</p>
+    </div>
+
+    <div class="technique-box">
+        <img src="/pictures/spectrometer-one.jpg" alt="DNA Nanotechnology" style="width:100%">
+        <h3>Hybrid Integrated Platforms for Future Technologies</h3>
+        <p>Developing integrated platforms for sensing and information processing.</p>
+    </div>
+</section>
+
+<style>
+/* Techniques Section - scoped for research.html */
+.techniques {
+    display: flex;
+    justify-content: center;   /* 水平居中 */
+    flex-wrap: wrap;           /* 如果屏幕窄就换行 */
+    gap: 60px;                 /* box 之间的间距 */
+    padding: 20px;
+    text-align: center;
+    margin-top: 35px;
+    margin-bottom: -90px;
+}
+
+.technique-box {
+    width: 280px;              /* 每个 box 的宽度 */
+    padding: 10px;
+    margin: 0;
+    box-sizing: border-box;
+    
+}
+
+.technique-box h3 {
+    margin: 12px 0 8px 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.technique-box p {
+    font-size: 14px;
+    color: #333;
+}
+</style>
+
+
+    
+    <section class="research-content">
+        
+
+        <!-- Current Projects Section -->
+        <div class="current-projects">
+            <h2>Current Projects</h2>
+
+            <!-- Project Box with Hover Effect -->
+            <div class="project-box">
+                <h3>Projects will be announced soon</h3>
+                <p>
+                    Our research program is currently under development, focusing on foundational questions 
+and platform-based approaches in quantum science and technology. 
+Detailed projects will be announced soon.
+                </p>
+            </div>
+        </div>
+    </section>
+
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-column">
+            <h3>OUR WORK</h3>
+            <ul>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="publications.html">Publications</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>LAB</h3>
+            <ul>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="openings.html">Openings</a></li>
+                <li><a href="student-projects.html">Student Projects</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <a href="https://www.ntu.edu.sg/eee" target="_blank">
+                <img src="NTU_logo.png" alt="NTU_logo" class="footer-logo">
+            </a>
+            <p>Copyright © 2025 Jin Chang - All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+    <script>
+        function toggleMenu() {
+            var mobileMenu = document.getElementById("mobile-menu");
+            var isMenuVisible = mobileMenu.style.display === "flex";
+            if (!isMenuVisible) {
+                mobileMenu.style.display = "flex";
+            } else {
+                mobileMenu.style.display = "none";
+            }
+        }
+
+        // 当点击页面的任何其他区域时，隐藏菜单
+        document.addEventListener('click', function(event) {
+            var mobileMenu = document.getElementById("mobile-menu");
+            var menuButton = document.querySelector('.hamburger-menu');
+            
+            if (!menuButton.contains(event.target) && !mobileMenu.contains(event.target)) {
+                mobileMenu.style.display = "none";
+            }
+        });
+    </script>
+
+    <!-- Vanta.js Animation for Research Header -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.globe.min.js"></script>
+    <script>
+        VANTA.GLOBE({
+            el: "#vanta-background",
+            mouseControls: true,
+  touchControls: true,
+  gyroControls: true,
+  minHeight: 200.00,
+  minWidth: 1500.00,
+  scale: 1.00,
+  scaleMobile: 1.00,
+  color2: 0x19ed83,
+  size: 2.00,
+  backgroundColor: 0x4fc6e8
+        })
+    </script>
+
+</body>
+</html>
