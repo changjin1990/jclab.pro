@@ -618,33 +618,20 @@ Current Projects Section
 <style>
 /* ===== FIX footer layout on mobile (index only) ===== */
 @media (max-width: 768px) {
-  /* 覆盖你前面把 grid 变 1 列的规则 */
   .footer-container{
-    display: flex !important;
-    flex-wrap: wrap !important;
-    align-items: flex-start !important;
-    gap: 16px !important;
+    display:flex !important;
+    flex-wrap: nowrap !important;   /* 不换行 */
+    gap: 12px !important;
   }
-
-  /* 两列布局（通常呈现 2+1 或 2+2，取决于内容） */
   .footer-column{
-    flex: 1 1 45% !important;
-    text-align: left !important;
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
   }
+  .footer-column h3{ font-size: 12px !important; }
+  .footer-column a, .footer-column li{ font-size: 12px !important; }
+  .footer-logo{ width: 120px !important; max-height: 50px !important; }
+}
 
-  /* 第三列（logo+copyright）占满一行，更稳 */
-  .footer-container .footer-column:last-child{
-    flex: 1 1 100% !important;
-    align-items: center !important;
-    text-align: center !important;
-  }
-
-  .footer-logo{
-    margin: 0 auto !important;
-    display: block !important;
-    max-width: 80% !important;
-    height: auto !important;
-  }
 
   .footer-container .footer-column:last-child p{
     text-align: center !important;
@@ -656,6 +643,7 @@ Current Projects Section
 
 </body>
 </html>
+
 
 
 
